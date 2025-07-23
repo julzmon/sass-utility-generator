@@ -1,0 +1,52 @@
+// @file _utilities.scss
+// @description
+//  Main entry point for generating all utility classes, both base and responsive.
+//  Imports config, variables, breakpoints, and all mixins.
+@use 'config' as config;
+@use 'breakpoints' as breakpoints;
+@use 'mixins/margin' as margin;
+@use 'mixins/padding' as padding;
+@use 'mixins/gap' as gap;
+@use 'mixins/grid' as grid;
+@use 'mixins/flexbox' as flexbox;
+@use 'mixins/typography' as typography;
+@use 'mixins/animation' as animation;
+@use 'mixins/bg' as bg;
+@use 'mixins/fg' as fg;
+@use 'mixins/border' as border;
+@use 'mixins/font' as font;
+@use 'mixins/icon' as icon;
+
+@layer utilities {
+  // Base (non-responsive) classes
+  @include margin.generate-margin-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include padding.generate-padding-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include gap.generate-gap-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include grid.generate-grid-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include flexbox.generate-flexbox-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include typography.generate-typography-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include animation.generate-animation-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include bg.generate-bg-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include fg.generate-fg-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include border.generate-border-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include font.generate-font-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+  @include icon.generate-icon-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+
+  // Responsive classes grouped by breakpoint
+  @each $break, $bp in breakpoints.$breakpoints {
+    @media (min-width: #{$bp}) {
+      @include margin.generate-margin-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include padding.generate-padding-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include gap.generate-gap-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include grid.generate-grid-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include flexbox.generate-flexbox-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include typography.generate-typography-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include animation.generate-animation-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include bg.generate-bg-utilities(config.$utility-prefix, breakpoints.$breakpoints, $break, $bp);
+      @include fg.generate-fg-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+      @include border.generate-border-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+      @include font.generate-font-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+      @include icon.generate-icon-utilities(config.$utility-prefix, breakpoints.$breakpoints);
+    }
+  }
+}

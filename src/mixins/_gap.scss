@@ -1,0 +1,35 @@
+// @mixin generate-gap-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates gap utility classes for grid/flex layouts.
+// Mixin to generate gap utilities
+// Expandable: add more gap-related utilities as needed
+@mixin generate-gap-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $gaps: (
+    '2xs': var(--kds-layout-gap-2xs),
+    'xs': var(--kds-layout-gap-xs),
+    'sm': var(--kds-layout-gap-sm),
+    'md': var(--kds-layout-gap-md),
+    'lg': var(--kds-layout-gap-lg),
+    'xl': var(--kds-layout-gap-xl),
+    '2xl': var(--kds-layout-gap-2xl),
+    '3xl': var(--kds-layout-gap-3xl)
+  );
+  $types: ('', 'x', 'y');
+  @each $key, $value in $gaps {
+    @each $type in $types {
+      $class: if($type == '', 'gap', 'gap-#{$type}');
+      $property: if($type == '', 'gap', if($type == 'x', 'column-gap', if($type == 'y', 'row-gap', null)));
+      @if $property != null {
+        @if $break == null {
+          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+        } @else {
+          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+        }
+      }
+    }
+  }
+  // Expand: add row-gap, column-gap, etc.
+}

@@ -1,0 +1,36 @@
+// @mixin generate-flexbox-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates flexbox utility classes (display, direction, justify, align).
+// Mixin to generate flexbox utilities
+// Expandable: add more flexbox-related utilities as needed
+@mixin generate-flexbox-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  // Flex display
+  @if $break == null {
+    .#{$prefix}-flex { display: flex; }
+    .#{$prefix}-inline-flex { display: inline-flex; }
+    // Direction
+    .#{$prefix}-flex-row { flex-direction: row; }
+    .#{$prefix}-flex-col { flex-direction: column; }
+    // Justify
+    .#{$prefix}-justify-center { justify-content: center; }
+    .#{$prefix}-justify-between { justify-content: space-between; }
+    // Items
+    .#{$prefix}-items-center { align-items: center; }
+    .#{$prefix}-items-start { align-items: flex-start; }
+    .#{$prefix}-items-end { align-items: flex-end; }
+  } @else {
+    .#{$break}\:#{$prefix}-flex { display: flex; }
+    .#{$break}\:#{$prefix}-inline-flex { display: inline-flex; }
+    .#{$break}\:#{$prefix}-flex-row { flex-direction: row; }
+    .#{$break}\:#{$prefix}-flex-col { flex-direction: column; }
+    .#{$break}\:#{$prefix}-justify-center { justify-content: center; }
+    .#{$break}\:#{$prefix}-justify-between { justify-content: space-between; }
+    .#{$break}\:#{$prefix}-items-center { align-items: center; }
+    .#{$break}\:#{$prefix}-items-start { align-items: flex-start; }
+    .#{$break}\:#{$prefix}-items-end { align-items: flex-end; }
+  }
+  // Expand: add more flexbox utilities as needed
+}

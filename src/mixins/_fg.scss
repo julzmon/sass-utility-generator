@@ -1,0 +1,29 @@
+// Mixin to generate foreground (color) utilities
+// @mixin generate-fg-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates foreground color utility classes.
+// Expandable: add more foreground-related utilities as needed
+@mixin generate-fg-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $fgs: (
+    'base': var(--kds-fg-base),
+    'brand-base': var(--kds-fg-brand-base),
+    'info-base': var(--kds-fg-info-base),
+    'link-base': var(--kds-fg-link-base),
+    'negative-base': var(--kds-fg-negative-base),
+    'neutral-base': var(--kds-fg-neutral-base),
+    'positive-base': var(--kds-fg-positive-base),
+    'warning-base': var(--kds-fg-warning-base)
+    // Add more as needed
+  );
+  @each $key, $value in $fgs {
+    @if $break != null and $bp != null {
+      .#{$break}\:#{$prefix}-fg-#{$key} { color: #{$value}; }
+    } @else {
+      .#{$prefix}-fg-#{$key} { color: #{$value}; }
+    }
+  }
+  // Expand: add more foreground utilities as needed
+}

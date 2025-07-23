@@ -1,0 +1,41 @@
+// @mixin generate-padding-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates padding utility classes for all sides and breakpoints.
+// Mixin to generate padding utilities
+// Expandable: add more padding-related utilities as needed
+@mixin generate-padding-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $spacing: (
+    '3xs': var(--kds-spacing-3xs),
+    '2xs': var(--kds-spacing-2xs),
+    'xs': var(--kds-spacing-xs),
+    'sm': var(--kds-spacing-sm),
+    'md': var(--kds-spacing-md),
+    'lg': var(--kds-spacing-lg),
+    'xl': var(--kds-spacing-xl),
+    '2xl': var(--kds-spacing-2xl)
+  );
+  $sides: ('', 't', 'r', 'b', 'l', 'x', 'y');
+  @each $key, $value in $spacing {
+    @each $side in $sides {
+      $class: if($side == '', 'p', 'p-#{$side}');
+      $property: if($side == '', 'padding',
+        if($side == 't', 'padding-block-start',
+        if($side == 'r', 'padding-inline-end',
+        if($side == 'b', 'padding-block-end',
+        if($side == 'l', 'padding-inline-start',
+        if($side == 'x', 'padding-inline',
+        if($side == 'y', 'padding-block', null)))))));
+      @if $property != null {
+        @if $break == null {
+          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+        } @else {
+          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+        }
+      }
+    }
+  }
+  // Expand: add more padding utilities as needed
+}

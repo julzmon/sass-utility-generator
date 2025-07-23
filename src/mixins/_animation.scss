@@ -1,0 +1,41 @@
+// @mixin generate-animation-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates animation delay and duration utility classes.
+// Mixin to generate animation utilities
+// Expandable: add more animation-related utilities as needed
+@mixin generate-animation-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $delays: (
+    'tiny': var(--kds-animation-delay-tiny),
+    'small': var(--kds-animation-delay-small),
+    'medium': var(--kds-animation-delay-medium),
+    'big': var(--kds-animation-delay-big),
+    'huge': var(--kds-animation-delay-huge)
+  );
+  $durations: (
+    'faster': var(--kds-animation-duration-faster),
+    'fast': var(--kds-animation-duration-fast),
+    'normal': var(--kds-animation-duration-normal),
+    'slow': var(--kds-animation-duration-slow),
+    'slower': var(--kds-animation-duration-slower)
+  );
+  // Animation delay
+  @each $key, $value in $delays {
+    @if $break == null {
+      .#{$prefix}-animation-delay-#{$key} { animation-delay: #{$value}; }
+    } @else {
+      .#{$break}\:#{$prefix}-animation-delay-#{$key} { animation-delay: #{$value}; }
+    }
+  }
+  // Animation duration
+  @each $key, $value in $durations {
+    @if $break == null {
+      .#{$prefix}-animation-duration-#{$key} { animation-duration: #{$value}; }
+    } @else {
+      .#{$break}\:#{$prefix}-animation-duration-#{$key} { animation-duration: #{$value}; }
+    }
+  }
+  // Expand: add more animation utilities as needed
+}

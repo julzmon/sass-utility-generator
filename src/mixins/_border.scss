@@ -1,0 +1,56 @@
+// Mixin to generate border utilities
+// @mixin generate-border-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates border color, width, and radius utility classes.
+// Expandable: add more border-related utilities as needed
+@mixin generate-border-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $border-colors: (
+    'brand-emphasis-base': var(--kds-border-brand-emphasis-base),
+    'neutral-emphasis-base': var(--kds-border-neutral-emphasis-base),
+    'positive-emphasis-base': var(--kds-border-positive-emphasis-base),
+    'negative-emphasis-base': var(--kds-border-negative-emphasis-base),
+    'info-emphasis-base': var(--kds-border-info-emphasis-base),
+    'warning-emphasis-base': var(--kds-border-warning-emphasis-base)
+    // Add more as needed
+  );
+  $border-widths: (
+    'xs': var(--kds-border-width-xs),
+    'sm': var(--kds-border-width-sm),
+    'md': var(--kds-border-width-md),
+    'lg': var(--kds-border-width-lg)
+  );
+  $border-radius: (
+    'xs': var(--kds-border-radius-xs),
+    'sm': var(--kds-border-radius-sm),
+    'md': var(--kds-border-radius-md),
+    'pill': var(--kds-border-radius-pill)
+  );
+  // Border color
+  @each $key, $value in $border-colors {
+    @if $break != null and $bp != null {
+      .#{$break}\:#{$prefix}-border-#{$key} { border-color: #{$value}; }
+    } @else {
+      .#{$prefix}-border-#{$key} { border-color: #{$value}; }
+    }
+  }
+  // Border width
+  @each $key, $value in $border-widths {
+    @if $break != null and $bp != null {
+      .#{$break}\:#{$prefix}-border-#{$key} { border-width: #{$value}; }
+    } @else {
+      .#{$prefix}-border-#{$key} { border-width: #{$value}; }
+    }
+  }
+  // Border radius
+  @each $key, $value in $border-radius {
+    @if $break != null and $bp != null {
+      .#{$break}\:#{$prefix}-rounded-#{$key} { border-radius: #{$value}; }
+    } @else {
+      .#{$prefix}-rounded-#{$key} { border-radius: #{$value}; }
+    }
+  }
+  // Expand: add more border utilities as needed
+}

@@ -1,0 +1,30 @@
+// @mixin generate-bg-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates background color utility classes.
+// Mixin to generate background utilities
+// Expandable: add more background-related utilities as needed
+@mixin generate-bg-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $bgs: (
+    'surface-base': var(--kds-bg-surface-base),
+    'surface-level-1': var(--kds-bg-surface-level-1),
+    'surface-level-2': var(--kds-bg-surface-level-2),
+    'brand-emphasis-base': var(--kds-bg-brand-emphasis-base),
+    'neutral-emphasis-base': var(--kds-bg-neutral-emphasis-base),
+    'positive-emphasis-base': var(--kds-bg-positive-emphasis-base),
+    'negative-emphasis-base': var(--kds-bg-negative-emphasis-base),
+    'info-emphasis-base': var(--kds-bg-info-emphasis-base),
+    'warning-emphasis-base': var(--kds-bg-warning-emphasis-base)
+    // Add more as needed
+  );
+  @each $key, $value in $bgs {
+    @if $break == null {
+      .#{$prefix}-bg-#{$key} { background-color: #{$value}; }
+    } @else {
+      .#{$break}\:#{$prefix}-bg-#{$key} { background-color: #{$value}; }
+    }
+  }
+  // Expand: add more background utilities as needed
+}

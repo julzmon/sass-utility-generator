@@ -1,0 +1,42 @@
+// @mixin generate-typography-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates typography utility classes (font size, weight, decoration).
+// Mixin to generate typography utilities
+// Expandable: add more typography-related utilities as needed
+@mixin generate-typography-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $sizes: (
+    'sm': 0.875rem,
+    'base': 1rem,
+    'lg': 1.125rem,
+    'xl': 1.25rem
+  );
+  $weights: (
+    'normal': 400,
+    'bold': 700
+  );
+  // Text size base classes
+  @each $key, $value in $sizes {
+    @if $break == null {
+      .#{$prefix}-text-#{$key} { font-size: #{$value}; }
+    } @else {
+      .#{$break}\:#{$prefix}-text-#{$key} { font-size: #{$value}; }
+    }
+  }
+  // Font weight base classes
+  @each $key, $value in $weights {
+    @if $break == null {
+      .#{$prefix}-font-#{$key} { font-weight: #{$value}; }
+    } @else {
+      .#{$break}\:#{$prefix}-font-#{$key} { font-weight: #{$value}; }
+    }
+  }
+  // Text decoration (not responsive)
+  @if $break == null {
+    .#{$prefix}-underline { text-decoration: underline; }
+    .#{$prefix}-line-through { text-decoration: line-through; }
+  }
+  // Expand: add more typography utilities as needed
+}

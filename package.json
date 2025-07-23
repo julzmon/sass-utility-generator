@@ -1,0 +1,16 @@
+{
+  "name": "sass-utility-generator",
+  "version": "1.0.0",
+  "description": "A SASS-based utility generator for CSS utilities with configurable variables, breakpoints, and prefix.",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/_utilities.scss dist/utilities.css --no-source-map",
+    "watch": "sass --watch src/_utilities.scss:dist/utilities.css --no-source-map",
+    "clean": "rm -rf dist/*"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.75.0"
+  }
+}

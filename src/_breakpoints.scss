@@ -1,0 +1,15 @@
+// @type {Map}
+// @name $breakpoints
+// @description
+//  Default responsive breakpoints for utility classes. Keys are breakpoint names, values are min-widths in px.
+//  You can override or extend this map as needed for your project.
+//
+//  Example:
+//    'sm': 768px,   // Small screens and up
+//    'md': 1024px,  // Medium screens and up
+//    'lg': 1200px   // Large screens and up
+$breakpoints: (
+  'sm': 768px,
+  'md': 1024px,
+  'lg': 1200px
+);

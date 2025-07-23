@@ -1,0 +1,26 @@
+// Mixin to generate icon size utilities
+// @mixin generate-icon-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates icon size utility classes.
+// Expandable: add more icon-related utilities as needed
+@mixin generate-icon-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  $icon-sizes: (
+    'xs': var(--kds-icon-size-xs),
+    'sm': var(--kds-icon-size-sm),
+    'md': var(--kds-icon-size-md),
+    'lg': var(--kds-icon-size-lg),
+    'xl': var(--kds-icon-size-xl),
+    '2xl': var(--kds-icon-size-2xl)
+  );
+  @each $key, $value in $icon-sizes {
+    @if $break != null and $bp != null {
+      .#{$break}\:#{$prefix}-icon-#{$key} { font-size: #{$value}; width: #{$value}; height: #{$value}; }
+    } @else {
+      .#{$prefix}-icon-#{$key} { font-size: #{$value}; width: #{$value}; height: #{$value}; }
+    }
+  }
+  // Expand: add more icon utilities as needed
+}
