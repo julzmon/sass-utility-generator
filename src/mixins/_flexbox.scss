@@ -9,28 +9,37 @@
 @mixin generate-flexbox-utilities($prefix, $breakpoints, $break: null, $bp: null) {
   // Flex display
   @if $break == null {
-    .#{$prefix}-flex { display: flex; }
-    .#{$prefix}-inline-flex { display: inline-flex; }
     // Direction
-    .#{$prefix}-flex-row { flex-direction: row; }
-    .#{$prefix}-flex-col { flex-direction: column; }
+    .#{$prefix}-flex-row { flex-direction: row }
+    .#{$prefix}-flex-col { flex-direction: column }
     // Justify
-    .#{$prefix}-justify-center { justify-content: center; }
-    .#{$prefix}-justify-between { justify-content: space-between; }
+    .#{$prefix}-justify-center { justify-content: center }
+    .#{$prefix}-justify-between { justify-content: space-between }
+    .#{$prefix}-justify-start { justify-content: flex-start }
+    .#{$prefix}-justify-end { justify-content: flex-end }
     // Items
-    .#{$prefix}-items-center { align-items: center; }
-    .#{$prefix}-items-start { align-items: flex-start; }
-    .#{$prefix}-items-end { align-items: flex-end; }
+    .#{$prefix}-items-center { align-items: center }
+    .#{$prefix}-items-start { align-items: flex-start }
+    .#{$prefix}-items-end { align-items: flex-end }
+    .#{$prefix}-place-content { place-content: center }
+    .#{$prefix}-place-items { place-items: center }
+    .#{$prefix}-grow { flex-grow: 1 }
+    .#{$prefix}-shrink { flex-shrink: 1 }
   } @else {
-    .#{$break}\:#{$prefix}-flex { display: flex; }
-    .#{$break}\:#{$prefix}-inline-flex { display: inline-flex; }
-    .#{$break}\:#{$prefix}-flex-row { flex-direction: row; }
-    .#{$break}\:#{$prefix}-flex-col { flex-direction: column; }
-    .#{$break}\:#{$prefix}-justify-center { justify-content: center; }
-    .#{$break}\:#{$prefix}-justify-between { justify-content: space-between; }
-    .#{$break}\:#{$prefix}-items-center { align-items: center; }
-    .#{$break}\:#{$prefix}-items-start { align-items: flex-start; }
-    .#{$break}\:#{$prefix}-items-end { align-items: flex-end; }
+    .#{$break}\:#{$prefix}-inline-flex { display: inline-flex }
+    .#{$break}\:#{$prefix}-flex-row { flex-direction: row }
+    .#{$break}\:#{$prefix}-flex-col { flex-direction: column }
+    .#{$break}\:#{$prefix}-justify-center { justify-content: center }
+    .#{$break}\:#{$prefix}-justify-between { justify-content: space-between }
+    .#{$break}\:#{$prefix}-justify-start { justify-content: flex-start }
+    .#{$break}\:#{$prefix}-justify-end { justify-content: flex-end }
+    .#{$break}\:#{$prefix}-items-center { align-items: center }
+    .#{$break}\:#{$prefix}-items-start { align-items: flex-start }
+    .#{$break}\:#{$prefix}-items-end { align-items: flex-end }
+    .#{$break}\:#{$prefix}-place-content { place-content: center }
+    .#{$break}\:#{$prefix}-place-items { place-items: center }
+    .#{$break}\:.#{$prefix}-grow { flex-grow: 1 }
+    .#{$break}\:.#{$prefix}-shrink { flex-shrink: 1 }
   }
   // Expand: add more flexbox utilities as needed
 }

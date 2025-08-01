@@ -7,13 +7,21 @@
 // Mixin to generate grid utilities
 // Expandable: add more grid-related utilities as needed
 @mixin generate-grid-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+  // TODO: Do we need rows?
   $cols: (1, 2, 3, 4, 5, 6, 12);
   @each $col in $cols {
     @if $break == null {
-      .#{$prefix}-grid-cols-#{$col} { grid-template-columns: repeat(#{$col}, minmax(0, 1fr)); }
+      .#{$prefix}-grid-cols-#{$col} { grid-template-columns: repeat(#{$col}, minmax(0, 1fr)) }
     } @else {
-      .#{$break}\:#{$prefix}-grid-cols-#{$col} { grid-template-columns: repeat(#{$col}, minmax(0, 1fr)); }
+      .#{$break}\:#{$prefix}-grid-cols-#{$col} { grid-template-columns: repeat(#{$col}, minmax(0, 1fr)) }
     }
   }
+  .#{$prefix}-cols-auto { grid-auto-columns: auto; }
+  .#{$prefix}-col-span-full { grid-column: 1 / -1 }
+  .#{$prefix}-col-span-2 { grid-column: span 2/span 2 }
+  .#{$prefix}-col-span-3 { grid-column: span 3/span 3 }
+  .#{$prefix}-col-span-4 { grid-column: span 4/span 4 }
+  .#{$prefix}-col-span-5 { grid-column: span 5/span 5 }
+  .#{$prefix}-col-span-6 { grid-column: span 6/span 6 }
   // Expand: add grid-rows, grid-auto, etc.
 }

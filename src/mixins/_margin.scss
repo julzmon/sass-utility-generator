@@ -8,6 +8,7 @@
 // Expandable: add more margin-related utilities as needed
 @mixin generate-margin-utilities($prefix, $breakpoints, $break: null, $bp: null) {
   $spacing: (
+    '0': 0,
     '3xs': var(--kds-spacing-3xs),
     '2xs': var(--kds-spacing-2xs),
     'xs': var(--kds-spacing-xs),
@@ -17,23 +18,44 @@
     'xl': var(--kds-spacing-xl),
     '2xl': var(--kds-spacing-2xl)
   );
-  $sides: ('', 't', 'r', 'b', 'l', 'x', 'y');
+  $sides: ('', 'bs', 'ie', 'be', 'is', 'i', 'b');
   @each $key, $value in $spacing {
     @each $side in $sides {
-      $class: if($side == '', 'm', 'm-#{$side}');
+      $class: if($side == '', 'm', 'm#{$side}');
       $property: if($side == '', 'margin',
-        if($side == 't', 'margin-block-start',
-        if($side == 'r', 'margin-inline-end',
-        if($side == 'b', 'margin-block-end',
-        if($side == 'l', 'margin-inline-start',
-        if($side == 'x', 'margin-inline',
-        if($side == 'y', 'margin-block', null)))))));
+        if($side == 'bs', 'margin-block-start',
+        if($side == 'ie', 'margin-inline-end',
+        if($side == 'be', 'margin-block-end',
+        if($side == 'is', 'margin-inline-start',
+        if($side == 'i', 'margin-inline',
+        if($side == 'b', 'margin-block', null)))))));
       @if $property != null {
         @if $break == null {
-          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value} }
         } @else {
-          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value} }
         }
+      }
+    }
+  }
+
+  // Auto margin utilities
+  $auto-sides: ('', 'bs', 'ie', 'be', 'is', 'i', 'b');
+  @each $side in $auto-sides {
+    $class: if($side == '', 'm', 'm#{$side}');
+    $property: if($side == '', 'margin',
+      if($side == 'bs', 'margin-block-start',
+      if($side == 'ie', 'margin-inline-end',
+      if($side == 'be', 'margin-block-end',
+      if($side == 'is', 'margin-inline-start',
+      if($side == 'i', 'margin-inline',
+      if($side == 'b', 'margin-block', null)))))));
+
+    @if $property != null {
+      @if $break == null {
+        .#{$prefix}-#{$class}-auto { #{$property}: auto }
+      } @else {
+        .#{$break}\:#{$prefix}-#{$class}-auto { #{$property}: auto }
       }
     }
   }

@@ -1,0 +1,24 @@
+// @mixin generate-bg-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates background color utility classes.
+// Mixin to generate background utilities
+// Expandable: add more background-related utilities as needed
+@mixin generate-z-index-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+    $index: (
+      'dropdown': '1000',
+      'sticky': '1020',
+      'fixed': '1030',
+      'backdrop': '1040',
+      'modal': '1050',
+      'popover': '1060',
+      'tooltip': '1070',
+      // Add more as needed
+      );
+    @each $key, $value in $index {
+      .#{$prefix}-z-index-#{$key} { z-index: #{$value} }
+    }
+    // Expand: add more background utilities as needed
+  }

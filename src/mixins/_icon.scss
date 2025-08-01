@@ -16,11 +16,7 @@
     '2xl': var(--kds-icon-size-2xl)
   );
   @each $key, $value in $icon-sizes {
-    @if $break != null and $bp != null {
-      .#{$break}\:#{$prefix}-icon-#{$key} { font-size: #{$value}; width: #{$value}; height: #{$value}; }
-    } @else {
-      .#{$prefix}-icon-#{$key} { font-size: #{$value}; width: #{$value}; height: #{$value}; }
-    }
+    .#{$prefix}-icon-#{$key} {width: #{$value}; height: #{$value}; }
   }
   // Expand: add more icon utilities as needed
 }

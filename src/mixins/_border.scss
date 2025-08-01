@@ -31,25 +31,25 @@
   // Border color
   @each $key, $value in $border-colors {
     @if $break != null and $bp != null {
-      .#{$break}\:#{$prefix}-border-#{$key} { border-color: #{$value}; }
+      .#{$break}\:#{$prefix}-border-#{$key} { border-color: #{$value} }
     } @else {
-      .#{$prefix}-border-#{$key} { border-color: #{$value}; }
+      .#{$prefix}-border-#{$key} { border-color: #{$value} }
     }
   }
   // Border width
   @each $key, $value in $border-widths {
     @if $break != null and $bp != null {
-      .#{$break}\:#{$prefix}-border-#{$key} { border-width: #{$value}; }
+      .#{$break}\:#{$prefix}-border-#{$key} { border-width: #{$value} }
     } @else {
-      .#{$prefix}-border-#{$key} { border-width: #{$value}; }
+      .#{$prefix}-border-#{$key} { border-width: #{$value} }
     }
   }
   // Border radius
   @each $key, $value in $border-radius {
     @if $break != null and $bp != null {
-      .#{$break}\:#{$prefix}-rounded-#{$key} { border-radius: #{$value}; }
+      .#{$break}\:#{$prefix}-rounded-#{$key} { border-radius: #{$value} }
     } @else {
-      .#{$prefix}-rounded-#{$key} { border-radius: #{$value}; }
+      .#{$prefix}-rounded-#{$key} { border-radius: #{$value} }
     }
   }
   // Expand: add more border utilities as needed
