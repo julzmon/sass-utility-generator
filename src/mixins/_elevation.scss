@@ -1,0 +1,19 @@
+// @mixin generate-bg-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates background color utility classes.
+// Mixin to generate background utilities
+// Expandable: add more background-related utilities as needed
+@mixin generate-elevation-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+    $elevation: (
+      'menu': var(--kds-elevation-menu),
+      'modal': var(--kds-elevation-modal),
+      // Add more as needed
+    );
+    @each $key, $value in $elevation {
+      .#{$prefix}-elevation-#{$key} { box-shadow: #{$value} }
+    }
+    // Expand: add more background utilities as needed
+  }

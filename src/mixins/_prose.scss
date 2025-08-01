@@ -1,0 +1,24 @@
+// @mixin generate-flexbox-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates flexbox utility classes (display, direction, justify, align).
+// Mixin to generate flexbox utilities
+// Expandable: add more flexbox-related utilities as needed
+@mixin generate-prose-utilities($prefix, $break: null, $bp: null) {
+    .#{$prefix}-prose-xs { max-width: 10ch }
+    .#{$prefix}-prose-sm { max-width: 30ch }
+    .#{$prefix}-prose-md { max-width: 50ch }
+    .#{$prefix}-prose-lg { max-width: 75ch }
+    .#{$prefix}-prose-xl { max-width: 90ch }
+    .#{$prefix}-prose-margins {
+      &:is(h1, h2, h3, h4, h5, h6) {
+          margin-bottom: var(--kds-layout-gap-md);
+      }
+      &:is(p, ul, ol, blockquote) {
+          margin-bottom: var(--kds-layout-gap-md);
+      }
+    }
+  // Expand: add more flexbox utilities as needed
+}

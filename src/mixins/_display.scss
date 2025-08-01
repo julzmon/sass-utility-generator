@@ -1,0 +1,91 @@
+// @mixin generate-flexbox-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates flexbox utility classes (display, direction, justify, align).
+// Mixin to generate flexbox utilities
+// Expandable: add more flexbox-related utilities as needed
+@mixin generate-display-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+    // Flex display
+    @if $break == null {
+      .#{$prefix}-block { display: block; }
+      .#{$prefix}-inline { display: inline; }
+      .#{$prefix}-flex { display: flex; }
+      .#{$prefix}-grid { display: grid; }
+      .#{$prefix}-inline-flex { display: inline-flex; }
+      .#{$prefix}-hidden { display: none; }
+      .#{$prefix}-sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border-width: 0;
+        &:focus,
+        &:active {
+          position: static;
+          width: auto;
+          height: auto;
+          margin: 0;
+          overflow: visible;
+          clip-path: none;
+          white-space: normal;
+        }
+      }
+      .#{$prefix}-not-sr-only {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        padding: initial !important;
+        margin: initial !important;
+        overflow: initial !important;
+        clip-path: none !important;
+        white-space: initial !important;
+        border-width: initial !important;
+      }
+    } @else {
+      .#{$break}\:#{$prefix}-block { display: block; }
+      .#{$break}\:#{$prefix}-inline { display: inline; }
+      .#{$break}\:#{$prefix}-flex { display: flex; }
+      .#{$break}\:#{$prefix}-grid { display: grid; }
+      .#{$break}\:#{$prefix}-inline-flex { display: inline-flex; }
+      .#{$break}\:.#{$prefix}-hidden { display: none; }
+      .#{$break}\:.#{$prefix}-sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border-width: 0;
+        &:focus,
+        &:active {
+          position: static;
+          width: auto;
+          height: auto;
+          margin: 0;
+          overflow: visible;
+          clip-path: none;
+          white-space: normal;
+        }
+      }
+      .#{$break}\:.#{$prefix}-not-sr-only {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        padding: initial !important;
+        margin: initial !important;
+        overflow: initial !important;
+        clip-path: none !important;
+        white-space: initial !important;
+        border-width: initial !important;
+      }
+    }
+    // Expand: add more flexbox utilities as needed
+  }

@@ -24,9 +24,9 @@
       $property: if($type == '', 'gap', if($type == 'x', 'column-gap', if($type == 'y', 'row-gap', null)));
       @if $property != null {
         @if $break == null {
-          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value} }
         } @else {
-          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value} }
         }
       }
     }

@@ -1,0 +1,38 @@
+// @mixin generate-bg-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates background color utility classes.
+// Mixin to generate background utilities
+// Expandable: add more background-related utilities as needed
+@mixin generate-position-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+    // Not including all the gap sizes as they might be too large
+    $top-gaps: (
+      '0': 0,
+      '2xs': var(--kds-layout-gap-2xs),
+      'xs': var(--kds-layout-gap-xs),
+      'sm': var(--kds-layout-gap-sm),
+      'md': var(--kds-layout-gap-md),
+      'lg': var(--kds-layout-gap-lg),
+      'xl': var(--kds-layout-gap-xl)
+    );
+    .#{$prefix}-static { position: static }
+    .#{$prefix}-fixed { position: fixed }
+    .#{$prefix}-absolute { position: absolute }
+    .#{$prefix}-relative { position: relative }
+    .#{$prefix}-sticky { position: sticky }
+    .#{$prefix}-right-0 { right: 0; }
+    .#{$prefix}-bottom-0 { bottom: 0; }
+    .#{$prefix}-left-0 { left: 0; }
+  
+    // Border width
+    @each $key, $value in $top-gaps {
+      @if $break != null and $bp != null {
+        .#{$break}\:#{$prefix}-top-#{$key} { top: #{$value} }
+      } @else {
+        .#{$prefix}-top-#{$key} { top: #{$value} }
+      }
+    }
+    // Expand: add more background utilities as needed
+  }

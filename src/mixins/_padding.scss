@@ -17,22 +17,22 @@
     'xl': var(--kds-spacing-xl),
     '2xl': var(--kds-spacing-2xl)
   );
-  $sides: ('', 't', 'r', 'b', 'l', 'x', 'y');
+  $sides: ('', 'bs', 'ie', 'be', 'is', 'i', 'b');
   @each $key, $value in $spacing {
     @each $side in $sides {
-      $class: if($side == '', 'p', 'p-#{$side}');
+      $class: if($side == '', 'p', 'p#{$side}');
       $property: if($side == '', 'padding',
-        if($side == 't', 'padding-block-start',
-        if($side == 'r', 'padding-inline-end',
-        if($side == 'b', 'padding-block-end',
-        if($side == 'l', 'padding-inline-start',
-        if($side == 'x', 'padding-inline',
-        if($side == 'y', 'padding-block', null)))))));
+        if($side == 'bs', 'padding-block-start',
+        if($side == 'ie', 'padding-inline-end',
+        if($side == 'be', 'padding-block-end',
+        if($side == 'is', 'padding-inline-start',
+        if($side == 'i', 'padding-inline',
+        if($side == 'b', 'padding-block', null)))))));
       @if $property != null {
         @if $break == null {
-          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+          .#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value} }
         } @else {
-          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value}; }
+          .#{$break}\:#{$prefix}-#{$class}-#{$key} { #{$property}: #{$value} }
         }
       }
     }

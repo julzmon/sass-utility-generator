@@ -19,11 +19,7 @@
     // Add more as needed
   );
   @each $key, $value in $fgs {
-    @if $break != null and $bp != null {
-      .#{$break}\:#{$prefix}-fg-#{$key} { color: #{$value}; }
-    } @else {
-      .#{$prefix}-fg-#{$key} { color: #{$value}; }
-    }
+      .#{$prefix}-fg-#{$key} { color: #{$value} }
   }
   // Expand: add more foreground utilities as needed
 }

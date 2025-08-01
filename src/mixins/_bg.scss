@@ -12,19 +12,21 @@
     'surface-level-1': var(--kds-bg-surface-level-1),
     'surface-level-2': var(--kds-bg-surface-level-2),
     'brand-emphasis-base': var(--kds-bg-brand-emphasis-base),
+    'brand-emphasis-hover': var(--kds-bg-brand-emphasis-hover),
     'neutral-emphasis-base': var(--kds-bg-neutral-emphasis-base),
+    'neutral-emphasis-hover': var(--kds-bg-neutral-emphasis-hover),
     'positive-emphasis-base': var(--kds-bg-positive-emphasis-base),
+    'positive-emphasis-hover': var(--kds-bg-positive-emphasis-hover),
     'negative-emphasis-base': var(--kds-bg-negative-emphasis-base),
+    'negative-emphasis-hover': var(--kds-bg-negative-emphasis-hover),
     'info-emphasis-base': var(--kds-bg-info-emphasis-base),
-    'warning-emphasis-base': var(--kds-bg-warning-emphasis-base)
+    'info-emphasis-hover': var(--kds-bg-info-emphasis-hover),
+    'warning-emphasis-base': var(--kds-bg-warning-emphasis-base),
+    'warning-emphasis-hover': var(--kds-bg-warning-emphasis-hover)
     // Add more as needed
   );
   @each $key, $value in $bgs {
-    @if $break == null {
-      .#{$prefix}-bg-#{$key} { background-color: #{$value}; }
-    } @else {
-      .#{$break}\:#{$prefix}-bg-#{$key} { background-color: #{$value}; }
-    }
+    .#{$prefix}-bg-#{$key} { background-color: #{$value} }
   }
   // Expand: add more background utilities as needed
 }

@@ -23,19 +23,11 @@
   );
   // Animation delay
   @each $key, $value in $delays {
-    @if $break == null {
-      .#{$prefix}-animation-delay-#{$key} { animation-delay: #{$value}; }
-    } @else {
-      .#{$break}\:#{$prefix}-animation-delay-#{$key} { animation-delay: #{$value}; }
-    }
+    .#{$prefix}-animation-delay-#{$key} { animation-delay: #{$value} }
   }
   // Animation duration
   @each $key, $value in $durations {
-    @if $break == null {
-      .#{$prefix}-animation-duration-#{$key} { animation-duration: #{$value}; }
-    } @else {
-      .#{$break}\:#{$prefix}-animation-duration-#{$key} { animation-duration: #{$value}; }
-    }
+    .#{$prefix}-animation-duration-#{$key} { animation-duration: #{$value} }
   }
   // Expand: add more animation utilities as needed
 }

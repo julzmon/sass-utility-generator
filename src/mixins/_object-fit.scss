@@ -1,0 +1,21 @@
+// @mixin generate-bg-utilities
+// @param {String} $prefix - Utility class prefix
+// @param {Map} $breakpoints - Breakpoint map
+// @param {String|null} $break - Breakpoint key (optional, for responsive)
+// @param {Number|null} $bp - Breakpoint value (optional, for responsive)
+// @description Generates background color utility classes.
+// Mixin to generate background utilities
+// Expandable: add more background-related utilities as needed
+@mixin generate-object-fit-utilities($prefix, $breakpoints, $break: null, $bp: null) {
+    $fit: (
+      'contain': 'contain',
+      'cover': 'cover',
+      'fill': 'fill',
+      'scale-down': 'scale-down',
+      // Add more as needed
+    );
+    @each $key, $value in $fit {
+      .#{$prefix}-object-fit-#{$key} { object-fit: #{$value} }
+    }
+    // Expand: add more background utilities as needed
+  }
