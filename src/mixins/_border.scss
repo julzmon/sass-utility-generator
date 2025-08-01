@@ -28,6 +28,11 @@
     'md': var(--kds-border-radius-md),
     'pill': var(--kds-border-radius-pill)
   );
+  $border-style: (
+    'none': none,
+    'solid': solid,
+    'dashed': dashed,
+  );
   // Border color
   @each $key, $value in $border-colors {
     @if $break != null and $bp != null {
@@ -50,6 +55,14 @@
       .#{$break}\:#{$prefix}-rounded-#{$key} { border-radius: #{$value} }
     } @else {
       .#{$prefix}-rounded-#{$key} { border-radius: #{$value} }
+    }
+  }
+  // Border style
+  @each $key, $value in $border-style {
+    @if $break != null and $bp != null {
+      .#{$break}\:#{$prefix}-border-#{$key} { border-style: #{$value} }
+    } @else {
+      .#{$prefix}-border-#{$key} { border-style: #{$value} }
     }
   }
   // Expand: add more border utilities as needed
