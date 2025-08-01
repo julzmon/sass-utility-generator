@@ -7,15 +7,15 @@
 // Mixin to generate flexbox utilities
 // Expandable: add more flexbox-related utilities as needed
 @mixin generate-height-utilities($prefix, $breakpoints, $break: null, $bp: null) {
-    // Flex display
-    @if $break == null {
-      .#{$prefix}-h-auto { height: auto }
-      .#{$prefix}-h-full { height: 100% }
-      .#{$prefix}-h-screen { height: 100vw }
-    } @else {
-      .#{$break}\:.#{$prefix}-h-auto { height: auto }
-      .#{$break}\:.#{$prefix}-h-full { height: 100% }
-      .#{$break}\:.#{$prefix}-h-screen { height: 100vw }
-    }
-    // Expand: add more flexbox utilities as needed
+  // Flex display
+  @if $break == null {
+    .#{$prefix}-h-auto { height: auto }
+    .#{$prefix}-h-full { height: 100% }
+    .#{$prefix}-h-screen { height: 100vh }
+  } @else {
+    .#{$break}\:.#{$prefix}-h-auto { height: auto }
+    .#{$break}\:.#{$prefix}-h-full { height: 100% }
+    .#{$break}\:.#{$prefix}-h-screen { height: 100vh }
   }
+  // Expand: add more flexbox utilities as needed
+}
